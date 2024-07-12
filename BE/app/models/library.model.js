@@ -45,7 +45,7 @@ const LIBRARY = sequelize.define("books", {
 
   publicationYear: {
     type: DataTypes.INTEGER, 
-    allowNull: true,
+    allowNull: false,
   },
 
   image: {
