@@ -21,7 +21,8 @@ const LIBRARY = sequelize.define("books", {
   },
 
   author: {
-    type: DataTypes.STRING(256), 
+    type: DataTypes.STRING(256),
+    allowNull: false,
   },
 
   ISBN: {

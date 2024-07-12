@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -26,7 +24,8 @@ const BookCard = ({delData, putData, books}) => {
         {books.map((book) => (
             <Card
               sx={{
-                width: 300,
+                width: 320,
+                height: 480,
                 padding: "1rem",
                 paddingBottom: "0",
                 display: "flex",
@@ -37,7 +36,7 @@ const BookCard = ({delData, putData, books}) => {
               key={book.id}
             >
               <CardMedia
-                sx={{ objectFit: "contain" }}
+                sx={{ height:250 }}
                 image={book?.image}
                 component="img"
               />
