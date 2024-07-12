@@ -21,7 +21,7 @@ require('express-async-errors')
 /* ------------------------------------------------------- */
 
 // Routes
-app.use(require('./app/routes/library.router'))
+app.use('/api/books', require('./app/routes/library.router'))
 
 /* ------------------------------------------------------- */
 
