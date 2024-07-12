@@ -1,0 +1,161 @@
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import { TextField } from "@mui/material";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+const BookAddModal = ({ postData }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+
+  const [bookInfo, setBookInfo] = useState({
+    title: "",
+    author: "",
+    ISBN: "",
+    genre: "",
+    publicationYear: "",
+    image: "",
+  });
+
+  const handleChange = (e) => {
+    setBookInfo({ ...bookInfo, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postData(bookInfo);
+    handleClose();
+  };
+
+  const handleClose = () => {
+    setBookInfo({
+      title: "",
+      author: "",
+      ISBN: "",
+      genre: "",
+      publicationYear: "",
+      image: "",
+    });
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button
+        variant="contained" color="success"
+        sx={{ display: "flex", justifyContent: "center", margin: "auto" }}
+        onClick={handleOpen}
+      >
+        Add Book
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+          component="form"
+          onSubmit={handleSubmit}
+          display="flex"
+          flexDirection="column"
+          gap="1rem"
+        >
+          <TextField
+            id="title"
+            name="title"
+            label="Kitap Adı"
+            variant="outlined"
+            value={bookInfo.title}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            id="author"
+            name="author"
+            label="Yazar"
+            variant="outlined"
+            value={bookInfo.author}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            id="ISBN"
+            name="ISBN"
+            label="ISBN"
+            variant="outlined"
+            value={bookInfo.ISBN}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            id="genre"
+            name="genre"
+            label="Tür"
+            variant="outlined"
+            value={bookInfo.genre}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            id="publicationYear"
+            name="publicationYear"
+            label="Yayın Yılı"
+            variant="outlined"
+            value={bookInfo.publicationYear}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            id="image"
+            name="image"
+            label="Kapak Resmi"
+            variant="outlined"
+            value={bookInfo.image}
+            onChange={handleChange}
+            required
+            type="url"
+          />
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{
+              backgroundColor: "purple",
+              "&:hover": {
+                color: "purple",
+                backgroundColor: "white",
+              },
+            }}
+          >
+            ADD BOOK
+          </Button>
+        </Box>
+      </Modal>
+    </div>
+  );
+};
+
+export default BookAddModal;
