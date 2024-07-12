@@ -39,8 +39,8 @@ const BookCard = ({ books, fetchData }) => {
             <CardActions sx={{ display: "flex", justifyContent: "center" }}>
               <Tooltip title="Delete" arrow>
                 <DeleteIcon
-                  onClick={() => {
-                    ApiService.delData(book.id);
+                  onClick={async() => {
+                    await ApiService.delData(book.id);
                     fetchData();
                   }}
                   sx={{ color: "black", "&:hover": { color: "purple", cursor: "pointer" } }}

@@ -38,9 +38,9 @@ const BookAddModal = ({ fetchData }) => {
     setBookInfo({ ...bookInfo, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    ApiService.postData(bookInfo);
+    await ApiService.postData(bookInfo);
     fetchData();
     handleClose();
   };

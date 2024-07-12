@@ -21,9 +21,9 @@ const BookEditModal = ({ open, setOpen, book, fetchData }) => {
     setBookInfo({ ...bookInfo, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    ApiService.putData(id, bookInfo);
+    await ApiService.putData(id, bookInfo);
     fetchData();
     setOpen(false);
   };
