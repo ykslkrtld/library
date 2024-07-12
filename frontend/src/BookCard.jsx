@@ -17,7 +17,7 @@ const BookCard = ({ books, fetchData }) => {
       <Grid container justifyContent="center" gap="1.2rem" margin="1.5rem 0" spacing={2}>
         {books.map((book) => (
           <Card
-            sx={{ width: 320, height: 480, padding: "1rem", paddingBottom: "0", display: "flex", flexDirection: "column", justifyContent: "space-around", alignItems: "center" }}
+            sx={{ width: 300, height: 480, padding: "1rem", display: "flex", flexDirection: "column", justifyContent: "space-around", alignItems: "center" }}
             key={book.id}
           >
             <CardMedia sx={{ height: 250 }} image={book?.image} component="img" />

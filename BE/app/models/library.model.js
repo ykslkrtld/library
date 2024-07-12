@@ -9,9 +9,17 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 // Connection
-const sequelize = new Sequelize(
-  "sqlite:" + process.env.SQLITE || "./db.sqlite3"
-); 
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false 
+    }
+  },
+  dialectModule: require('pg')
+});
 
 const LIBRARY = sequelize.define("books", {
  
