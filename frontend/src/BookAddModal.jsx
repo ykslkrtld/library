@@ -58,7 +58,7 @@ const BookAddModal = ({ postData }) => {
         sx={{ display: "flex", justifyContent: "center", margin: "auto" }}
         onClick={handleOpen}
       >
-        Add Book
+        KİTAP EKLE
       </Button>
       <Modal
         open={open}
@@ -150,7 +150,7 @@ const BookAddModal = ({ postData }) => {
               },
             }}
           >
-            ADD BOOK
+            KAYDET
           </Button>
         </Box>
       </Modal>

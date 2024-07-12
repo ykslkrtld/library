@@ -28,7 +28,7 @@ const BookCard = ({delData, books}) => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-around",
-                alignItems: "start",
+                alignItems: "center",
               }}
               key={book.id}
             >
@@ -40,17 +40,17 @@ const BookCard = ({delData, books}) => {
               <Typography gutterBottom variant="h4" component="div">
                 {book.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Yazar: {book.author}
+              <Typography variant="body1" color="purple">
+                <span style={{color:"black"}}>Yazar:</span> {book.author}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Tür: {book.genre}
+              <Typography variant="body1" color="purple">
+              <span style={{color:"black"}}>Tür:</span> {book.genre}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Yayınlama Yılı: {book.publicationYear}
+              <Typography variant="body1" color="purple">
+              <span style={{color:"black"}}>Yayın Yılı:</span> {book.publicationYear}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                ISBN: {book.ISBN}
+              <Typography variant="body1" color="purple">
+              <span style={{color:"black"}}>ISBN:</span> {book.ISBN}
               </Typography>
               <CardActions sx={{ display: "flex", justifyContent: "center" }}>
                 <Tooltip title="Delete" arrow>
