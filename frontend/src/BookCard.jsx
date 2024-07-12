@@ -13,12 +13,12 @@ const BookCard = ({delData, putData, books}) => {
   const [open, setOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
 
-  return <Container>
+  return <Container >
     <Grid
         container
         justifyContent="center"
         gap="1.2rem"
-        marginTop="1.5rem"
+        margin="1.5rem 0"
         spacing={2}
       >
         {books.map((book) => (

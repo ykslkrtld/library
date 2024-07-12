@@ -2,7 +2,7 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -15,6 +15,9 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+const currentYear = new Date().getFullYear();
+const years = Array.from(new Array(currentYear - 1900 + 1), (val, index) => currentYear - index);
 
 const BookAddModal = ({ postData }) => {
   const [open, setOpen] = useState(false);
@@ -120,15 +123,23 @@ const BookAddModal = ({ postData }) => {
             onChange={handleChange}
             required
           />
-          <TextField
-            id="publicationYear"
-            name="publicationYear"
-            label="Yayın Yılı"
-            variant="outlined"
-            value={bookInfo.publicationYear}
-            onChange={handleChange}
-            required
-          />
+          <FormControl variant="outlined" required>
+            <InputLabel id="publicationYear-label">Yayın Yılı</InputLabel>
+            <Select
+              labelId="publicationYear-label"
+              id="publicationYear"
+              name="publicationYear"
+              value={bookInfo.publicationYear}
+              onChange={handleChange}
+              label="Yayın Yılı"
+            >
+              {years.map((year) => (
+                <MenuItem key={year} value={year}>
+                  {year}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             id="image"
             name="image"
