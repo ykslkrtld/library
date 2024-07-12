@@ -7,9 +7,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Typography from '@mui/material/Typography';
 import { CardMedia, Container, Grid, Tooltip } from "@mui/material";
+import BookEditModal from "./BookEditModal";
 
 
-const BookCard = ({delData, books}) => {
+const BookCard = ({delData, putData, books}) => {
+
+  const [open, setOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   return <Container>
     <Grid
@@ -70,18 +74,19 @@ const BookCard = ({delData, books}) => {
                         color: "black",
                         "&:hover": { color: "purple", cursor: "pointer" },
                       }}
-                    // onClick={() => {
-                    //   setOpen(true);
-                    //   setSelectedFirm(firm._id);
-                    // }}
+                    onClick={() => {
+                      setOpen(true);
+                      setSelectedBook(book.id);
+                    }}
                   />
                 </Tooltip>
               </CardActions>
-              {/* <FirmEditModal
-                open={open && selectedFirm === firm._id}
+              <BookEditModal
+                putData={putData}
+                open={open && selectedBook === book.id}
                 setOpen={setOpen}
-                firm={firm}
-              /> */}
+                book={book}
+              />
             </Card>
         ))}
       </Grid>

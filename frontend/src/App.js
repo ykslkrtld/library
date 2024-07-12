@@ -37,6 +37,16 @@ function App() {
     }
   }
 
+  const putData = async (id, data) => {
+    try {
+
+      await axios.put(`http://127.0.0.1:8000/books/${id}`, data)
+      getData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -47,7 +57,7 @@ function App() {
         <h1>YKSL LIBRARY</h1>
       </header>
       <BookAddModal postData={postData}/>
-      <BookCard getData={getData} delData={delData} books={books} />
+      <BookCard getData={getData} delData={delData} putData={putData} books={books} />
     </div>
   );
 }
