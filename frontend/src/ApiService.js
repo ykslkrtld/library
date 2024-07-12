@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toastSuccessNotify, toastErrorNotify } from './ToastNotify';
 
 const ApiService = {
   getData: async () => {
@@ -14,7 +15,9 @@ const ApiService = {
   delData: async (id) => {
     try {
       await axios.delete(`https://library-yksl-backend.vercel.app/api/books/${id}`);
+      toastSuccessNotify("Data deleted successfully!");
     } catch (error) {
+      toastErrorNotify("Failed to delete data!");
       console.error(error);
     }
   },
@@ -22,7 +25,9 @@ const ApiService = {
   postData: async (data) => {
     try {
       await axios.post("https://library-yksl-backend.vercel.app/api/books/", data);
+      toastSuccessNotify("Data posted successfully!");
     } catch (error) {
+      toastErrorNotify("Failed to post data!");
       console.error(error);
     }
   },
@@ -30,7 +35,9 @@ const ApiService = {
   putData: async (id, data) => {
     try {
       await axios.put(`https://library-yksl-backend.vercel.app/api/books/${id}`, data);
+      toastSuccessNotify("Data updated successfully!");
     } catch (error) {
+      toastErrorNotify("Failed to update data!");
       console.error(error);
     }
   }

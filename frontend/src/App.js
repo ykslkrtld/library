@@ -5,6 +5,9 @@ import BookCard from './BookCard';
 import ApiService from './ApiService';
 import loadingGif from "./assets/loading.gif";
 import { CardMedia } from '@mui/material';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -23,6 +26,7 @@ function App() {
 
   return (
     <div>
+      <ToastContainer />
       {loading ? (
         <div
           style={{
