@@ -56,8 +56,9 @@ const LIBRARY = sequelize.define("books", {
 });
 
 // Syncronization
-// sequelize.sync();
-// sequelize.sync({alter: true})
+(async () => {
+  await sequelize.sync({ alter: true }); // Tabloyu günceller, yoksa oluşturur
+})();
 
 // Connect to DB
 sequelize.authenticate();

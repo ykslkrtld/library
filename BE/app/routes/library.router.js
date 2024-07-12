@@ -28,11 +28,11 @@ router.delete('/:id', LIBRARY.delete)
 
 /* ------------------------------------------------------- */
 
-router.route('/books')
+router.route('/')
     .get(LIBRARY.list)
     .post(LIBRARY.create)
 
-router.route('/books/:id')
+router.route('/:id')
     .get(LIBRARY.read)
     .put(LIBRARY.update)
     .delete(LIBRARY.delete)
