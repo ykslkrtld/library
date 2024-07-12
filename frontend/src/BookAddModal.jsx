@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import ApiService from './ApiService';
+
 
 const style = {
   position: "absolute",
@@ -19,7 +21,7 @@ const style = {
 const currentYear = new Date().getFullYear();
 const years = Array.from(new Array(currentYear - 1900 + 1), (val, index) => currentYear - index);
 
-const BookAddModal = ({ postData }) => {
+const BookAddModal = ({ fetchData }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
 
@@ -38,7 +40,8 @@ const BookAddModal = ({ postData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postData(bookInfo);
+    ApiService.postData(bookInfo);
+    fetchData();
     handleClose();
   };
 

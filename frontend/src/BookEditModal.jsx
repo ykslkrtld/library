@@ -1,10 +1,11 @@
 import { Box, Button, Fade, FormControl, InputLabel, MenuItem, Modal, Select, TextField } from "@mui/material";
 import React, { useState } from "react";
+import ApiService from './ApiService';
 
 const currentYear = new Date().getFullYear();
 const years = Array.from(new Array(currentYear - 1900 + 1), (val, index) => currentYear - index);
 
-const BookEditModal = ({ putData, open, setOpen, book }) => {
+const BookEditModal = ({ open, setOpen, book, fetchData }) => {
   const { title, author, genre, ISBN, publicationYear, image, id } = book;
 
   const [bookInfo, setBookInfo] = useState({
@@ -22,7 +23,8 @@ const BookEditModal = ({ putData, open, setOpen, book }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    putData(id, bookInfo);
+    ApiService.putData(id, bookInfo);
+    fetchData();
     setOpen(false);
   };
 
